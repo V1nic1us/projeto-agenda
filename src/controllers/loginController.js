@@ -1,6 +1,7 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (request, response) => {
+    if(request.session.user) return response.render('login-logado');
     return response.render('login');
 }
 
