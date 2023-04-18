@@ -30,3 +30,23 @@ exports.editIndex = async(request, response) =>{
     if (!contato) return response.render('error');
     response.render('contato', { contato });
 }
+
+exports.edit = async(request, response) =>{
+    try {
+        if (!request.params.id) return response.render('error');
+        const contato = new Contato(request.body);
+        await contato.edit(request.params.id);
+        if (contato.errors.length > 0) {
+            request.flash('errors', contato.errors);
+            request.session.save(() => response.redirect('back'));
+            return;
+        }
+    
+        request.flash('success', 'Contato Editado com sucesso');
+        request.session.save(() => response.redirect(`/contato/index/${contato.contato._id}`));
+        return;
+    } catch (error) {
+        console.log(error);
+        return response.render('error');
+    }
+}
