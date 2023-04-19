@@ -12,7 +12,7 @@
             <%- include('includes/messages')%>
 
             <div class="row">
-                <div class="col lg">
+                <div class="col-lg my-5">
                     <h4>Faça seu cadastro</h4>
                     <p>Se ainda não tem conta, preencha o formulario abaixo:</p>
                     <form class="form-cadastro" action="/login/register" method="POST">
@@ -30,10 +30,12 @@
                 </div>
 
 
-                <div class="col lg">
+                <div class="col-lg my-5">
                     <h4>Faça seu login</h4>
 
-                    <form class="form-group" action="/login/signin" method="POST">
+                    <p>Se você ja tem uma conta , faça login abaixo:</p>
+
+                    <form class="form-login" action="/login/signin" method="POST">
                         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                         <div class="form-group">
                           <label for="email">Seu e-mail</label>
