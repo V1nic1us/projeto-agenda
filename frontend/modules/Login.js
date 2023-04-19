@@ -33,7 +33,5 @@ export default class Login{
         }
 
         if(!error) el.submit();
-
-        console.log(emailInput.value, passwordInput.value);
     }
 }
